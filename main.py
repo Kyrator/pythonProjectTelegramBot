@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import sys
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 
@@ -14,6 +15,11 @@ bot = Bot(token=token)
 # Диспетчер
 dp = Dispatcher()
 
+@dp.message(Command("start"))
+async def command_start_handler(message: types.Message) -> None:
+    await message.answer("Привет {name} это лучший сервис по поиску отелей, пользуйся на здоровье мой пирожочек".format(
+        name=message.from_user.first_name
+    ))
 
 # Хэндлер на команду /help — для получения справки о доступных командах бота;
 @dp.message(Command("hello-world"))
@@ -22,7 +28,7 @@ async def cmd_start(message: types.Message):
 
 
 # Хэндлер на команду /help — для получения справки о доступных командах бота;
-@dp.message(Command("start"))
+@dp.message(Command)
 async def cmd_start(message: types.Message):
     await message.answer("Hello!")
 
