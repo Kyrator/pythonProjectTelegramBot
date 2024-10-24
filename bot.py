@@ -10,7 +10,7 @@ with open("setting.txt", "r", encoding="utf-8") as file:
 logging.basicConfig(level=logging.INFO)
 # Объект бота
 # @goodmorn_ru_bot
-bot = Bot(token="6466365417:AAEH5UVZYqOQWou9kNGnVLNFXx1RvMQCTag")
+bot = Bot(token=token)
 # Диспетчер
 dp = Dispatcher()
 
