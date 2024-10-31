@@ -2,11 +2,12 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
+from config import TOKEN
 
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
 # Объект бота
-bot = Bot(token="7985978821:AAFwgKHlUGJQzXtPooEARSoQfa6UZlkmlTA")
+bot = Bot(token=TOKEN)
 # Диспетчер
 dp = Dispatcher()
 
@@ -21,7 +22,7 @@ async def cmd_start(message: types.Message):
 
 # Хэндлер на команду /help
 @dp.message(Command("help"))
-async def cmd_start(message: types.Message):
+async def cmd_help(message: types.Message):
     list_commands = [
         ('start', "Запустить бота"),
         ('help', "Вывести справку"),
@@ -34,10 +35,35 @@ async def cmd_start(message: types.Message):
     await message.answer('\n'.join(text))
 
 
+@dp.message(Command("highprice"))
+async def cmd_highprice(message: types.Message):
+    pass
+
+
+@dp.message(Command("lowprice"))
+async def cmd_lowprice(message: types.Message):
+    pass
+
+
+@dp.message(Command("bestdeal"))
+async def cmd_bestdeal(message: types.Message):
+    pass
+
+
+@dp.message(Command("history"))
+async def cmd_history(message: types.Message):
+    pass
+
+
+@dp.message(Command("city"))
+async def cmd_city(message: types.Message):
+    pass
+
 
 # Запуск процесса поллинга новых апдейтов
 async def main():
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
